@@ -40,7 +40,8 @@ const App = () => {
                     }>
     {data.map((item)=>{
         return(
-            <Picker.Item label={item.Orszag_nev} value={item.Orszag_zaszlo} />
+            <Picker.Item label={item.Orszag_nev} value={item.Orszag_zaszlo}/>
+
          
 	)}
 	)}
@@ -52,9 +53,13 @@ const App = () => {
       title=""
       color="#C41E3A"
       />
-          <Image source={{uri:'http://192.168.10.64:3000/'+selectedOrszag}} style={{width:112,height:80, backgroundColor: 'white'}}   />
-                   
+      <Image source={{uri:'http://192.168.10.64:3000/'+selectedOrszag}} style={{width:112,height:80, backgroundColor: 'white'}}   />
 
+      {/* 
+          <Image source={{uri:'http://192.168.10.64:3000/'+data[selectedOrszag].Orszag_zaszlo}} style={{width:112,height:80, backgroundColor: 'white'}}   />
+          <Text style={{fontSize: 25, color: 'black', textAlign: 'center' }}>{data[selectedOrszag].Orszag_szoveg}</Text>
+                   
+*/}
       
     </View>
   );
