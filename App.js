@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { Button, View, ImageBackground,  } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native'; 
 import Proba from './Proba'
 import Orszag from './Orszag'
 import Varos from './Varos'
 import Felvitel from './Felvitel'
 import Lenyilo from './Lenyilo'
+import KozosScreen from './KozosScreen'
+import Ujlap from './Ujlap'
+
 
 
 function HomeScreen({ navigation }) {
@@ -61,6 +65,10 @@ function HomeScreen({ navigation }) {
       color="white"
       />
       </View>
+      <Button
+        onPress={() => navigation.navigate('Proba')}
+        title="Próba screen meghívása"
+      />
 
         
       </View>
@@ -102,17 +110,9 @@ function Varos_megjelenites({ navigation })
   );
 }
 
-
-
-
-
-const Drawer = createDrawerNavigator();
-
-
-export default function App() {
+function Root({ navigation }) {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator 
+    <Drawer.Navigator 
       screenOptions={{
         drawerStyle:{
           backgroundColor:'lightgreen'
@@ -125,8 +125,47 @@ export default function App() {
         <Drawer.Screen name="Országok" component={Orszag_megjelenites} />
         <Drawer.Screen name="Városok" component={Varos_megjelenites} />
         <Drawer.Screen name="Felvitel" component={Felvitel} />   
-        <Drawer.Screen name="Lenyilo" component={Lenyilo} />      
+        <Drawer.Screen name="Lenyilo" component={Lenyilo} /> 
+        <Drawer.Screen name="KözösScreen" component={KozosScreen}  />     
       </Drawer.Navigator>
+
+  );
+}
+
+
+
+
+
+const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator >
+        <Stack.Screen name="Vissza" component={Root} options={{headerShown:false}} />
+        <Stack.Screen name="Proba" component={Proba}  />  
+        <Stack.Screen name ="Ujlap" component={Ujlap} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+
+
+{/*
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    
+    <NavigationContainer>
+      <Stack.Navigator>
+      
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+*/}
