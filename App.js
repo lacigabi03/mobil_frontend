@@ -13,6 +13,7 @@ import Ujlap from './Ujlap'
 
 
 
+
 function HomeScreen({ navigation }) {
   return (
     <ImageBackground  source={require('./bg.png')}
@@ -126,7 +127,8 @@ function Root({ navigation }) {
         <Drawer.Screen name="Városok" component={Varos_megjelenites} />
         <Drawer.Screen name="Felvitel" component={Felvitel} />   
         <Drawer.Screen name="Lenyilo" component={Lenyilo} /> 
-        <Drawer.Screen name="KözösScreen" component={KozosScreen}  />     
+        <Drawer.Screen name="KözösScreen" component={KozosScreen}  />  
+          
       </Drawer.Navigator>
 
   );

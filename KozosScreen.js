@@ -44,8 +44,20 @@ const KozosScreen = ({navigation}) => {
             
 
                             {/* Gomb átugrik az " Ujlap.js "-re */}
-                            
+              <View style={{color:'#800000',
+                        paddingTop: 'auto',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        fontSize:20,
+                        height:45,
+                        overflow:'hidden',
+                        borderRadius:10,
+                        backgroundColor:'#F0E68C',
+                        borderRadius:20
+                        }}>              
             <Button
+            
+            
                         onPress=
                         {() => navigation.navigate('Ujlap', 
                         {
@@ -57,12 +69,18 @@ const KozosScreen = ({navigation}) => {
                         )
                     }
                         title="Részletek"
-                        color="red"
+                        color="#800000"
+                        padding= '10'
+                        fontSize='20'
+                        height='45'
+                        overflow='hidden'
+                        
+                        
                         
                         
                         />
                         
-
+                        </View>
             </View>
           )}
         />
