@@ -10,6 +10,9 @@ import Felvitel from './Felvitel'
 import Lenyilo from './Lenyilo'
 import KozosScreen from './KozosScreen'
 import Ujlap from './Ujlap'
+import Video from './Video'
+import Nevjegy from './Nevjegy'
+import Rejtveny from './Rejtvény'
 
 
 
@@ -128,6 +131,9 @@ function Root({ navigation }) {
         <Drawer.Screen name="Felvitel" component={Felvitel} />   
         <Drawer.Screen name="Lenyilo" component={Lenyilo} /> 
         <Drawer.Screen name="KözösScreen" component={KozosScreen}  />  
+        <Drawer.Screen name="Videó" component={Video}  />
+        <Drawer.Screen name="Névjegy" component={Nevjegy}  />
+        <Drawer.Screen name="Rejtvény" component={Rejtveny}  />
           
       </Drawer.Navigator>
 

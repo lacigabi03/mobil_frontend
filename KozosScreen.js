@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, Text, View, Button, Image} from 'react-native';
+import {ActivityIndicator, ScrollView, FlatList, Text, View, Button, Image} from 'react-native';
 import Ipcim from './Ipcim';
 
 const KozosScreen = ({navigation}) => {
@@ -45,7 +45,7 @@ const KozosScreen = ({navigation}) => {
 
                             {/* Gomb átugrik az " Ujlap.js "-re */}
               <View style={{color:'#800000',
-                        paddingTop: 'auto',
+                        padding: 'auto',
                         marginLeft: 'auto',
                         marginRight: 'auto',
                         fontSize:20,
@@ -64,19 +64,18 @@ const KozosScreen = ({navigation}) => {
                             atkuld1:item.Orszag_id, 
                             atkuld2:item.Orszag_nev, 
                             atkuld3:item.Orszag_szoveg, 
-                            atkuld4:item.Orszag_zaszlo
+                            atkuld4:item.Orszag_zaszlo,
+                            atkuld5:item.Orszag_link
                         }
                         )
                     }
                         title="Részletek"
                         color="#800000"
-                        padding= '10'
                         fontSize='20'
                         height='45'
                         overflow='hidden'
-                        
-                        
-                        
+
+
                         
                         />
                         

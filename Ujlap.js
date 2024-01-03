@@ -1,14 +1,15 @@
 import React from 'react';
-import {StyleSheet, View, Text,Image} from 'react-native';
+import {StyleSheet, View, Text,Image, ScrollView} from 'react-native';
 import Ipcim from './Ipcim';
+import { WebView } from 'react-native-webview';
 
 const Ujlap = ({route}) => {
-    const {atkuld1,atkuld2,atkuld3,atkuld4} = route.params
+    const {atkuld1,atkuld2,atkuld3,atkuld4,atkuld5} = route.params
 
     return (
         
         <View style={styles.container}>
-            
+            <ScrollView style={styles.scrollView}> 
             <Text 
             style=
             {
@@ -36,7 +37,14 @@ const Ujlap = ({route}) => {
             >
                 {atkuld3}
             </Text>
+            
 
+
+            
+                
+        <WebView source={{ uri:atkuld5}} style={{ flex: 1 }} />
+            
+        </ScrollView>
         </View>
         
     );

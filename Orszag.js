@@ -9,7 +9,7 @@ const App = () => {
 
   const getMovies = async () => {
     try {
-      const response = await fetch('http://192.168.0.234:3000//orszag');  //Iskolai: 'http://192.168.10.64:3000/'
+      const response = await fetch('http://192.168.10.64:3000/orszag');  //Iskolai: 'http://192.168.10.64:3000/'
       const json = await response.json();
       setData(json);
     } catch (error) {
