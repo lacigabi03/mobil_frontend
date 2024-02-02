@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Image, View, Text, TextInput } from 'react-native';
+import { Button, Image, View, Text, TextInput, Platform } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import Ipcim from './Ipcim';
 
@@ -8,7 +8,7 @@ export default function ImagePickerExample() {
   const [bevitel1, setBevitel1] = useState('');
 
   const SERVER_URL = Ipcim.Ipcim;
-
+/*
   const createFormData = (photo, body = {}) => {
     const data = new FormData();
 
@@ -24,7 +24,40 @@ export default function ImagePickerExample() {
 
     return data;
   };
+*/
 
+const createFormData = (photo, body = {}) => {
+  const data = new FormData();
+
+  if (photo.cancelled || photo.canceled) {
+    // Handle case where photo selection was cancelled
+    console.warn('Photo selection was cancelled.');
+    return null; // or handle it according to your application's logic
+  }
+
+  if (photo.assets && photo.assets.length > 0) {
+    // Use 'assets' array if available
+    const asset = photo.assets[0];
+    data.append('photo', {
+      name: 'photo.jpg',
+      type: 'image/jpg',
+      uri: asset.uri,
+    });
+  } else {
+    // Fallback to 'uri' for compatibility
+    data.append('photo', {
+      name: 'photo.jpg',
+      type: 'image/jpg',
+      uri: Platform.OS === 'ios' ? photo.uri.replace('file://', '') : photo.uri,
+    });
+  }
+
+  Object.keys(body).forEach((key) => {
+    data.append(key, body[key]);
+  });
+
+  return data;
+};
   const handleUploadPhoto = async () => {
     try {
       if (!image) {
@@ -70,12 +103,14 @@ export default function ImagePickerExample() {
     <Text style={{padding: 10}}>
       Név:
       </Text>
+      
       <TextInput
         style={{height: 40, margin:5, backgroundColor:"cyan"}}
         placeholder="Írd be a nevet!"
         onChangeText={newText => setBevitel1(newText)}
         defaultValue={bevitel1}
     />
+     
       <Button title="Kép feltöltése" onPress={handleUploadPhoto} />
       <Button title="Válaszd ki a képet a gallériádból" onPress={pickImage} />
       {image && <Image source={{ uri: image.uri }} style={{ width: 200, height: 200 }} />}
